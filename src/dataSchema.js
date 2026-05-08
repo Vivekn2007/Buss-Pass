@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Buss-Pass:VivekAtlas123@cluster0.khjbzf9.mongodb.net/?appName=Cluster0').then(() => {
-    console.log('connected successfull');
-}).catch((e) => {
-    console.log(e.message);
-})
+mongoose.connect(process.env.MONGODB_URI);
+
 
 const data = new mongoose.Schema({
     email: {
