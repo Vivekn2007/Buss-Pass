@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.2.4",
     "child_process": "^1.0.2",
+    "connect-mongo": "^6.0.0",
     "ejs": "^5.0.2",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
