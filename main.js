@@ -10,12 +10,6 @@ const file = require('fs');
 const puppeteer = require("puppeteer");
 
 
-app.use(session({
-  secret: 'your-secret-key',   // change to a strong secret
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false }  
-})); 
 function requireLogin(req, res, next) {
   if (!req.session.user) {
     return res.redirect('/login');  // send back to login
@@ -50,11 +44,7 @@ const dataBase = 'Student';
 const collection = 'studs';
 
 
-app.use(session({
-    secret: 'yourSecretKey',
-    resave: false,
-    saveUninitialized: true
-}));
+
 
 app.get('/login',(req,res)=>{
     res.render('login');
