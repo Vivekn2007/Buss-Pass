@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
-
 const data = new mongoose.Schema({
     email: {
         type: String,
