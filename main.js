@@ -22,7 +22,18 @@ function requireLogin(req, res, next) {
   }
   next();
 }
-const upload = multer({ dest: "uploads/" });
+const MongoStore = require('connect-mongo');
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI
+  })
+}));
+const storage = multer.memoryStorage(); // keep files in memory
+const upload = multer({ storage });
 
 const publicPath = path.join(__dirname, './public');
 const viewsPath = path.join(__dirname, './views');
@@ -499,8 +510,4 @@ app.get("/logout", (req, res) => {
     res.redirect("/login");
   });
 });
-app.listen(3000, () => {
-    console.log(publicPath);
-    console.log(viewsPath);
-    console.log('connected succesfully');
-})
+module.exports = app;
